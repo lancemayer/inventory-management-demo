@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./app/Home";
 import Item from "./app/Item";
+import Items from "./app/Items";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -17,6 +18,13 @@ const router = createBrowserRouter([
 			{
 				path: "/item",
 				element: <Item />,
+			},
+			{
+				path: "/items",
+				element: <Items />,
+				loader: async () => {
+					return fetch(`${import.meta.env.VITE_API_URL}/items`);
+				},
 			},
 		],
 	},

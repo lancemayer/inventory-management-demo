@@ -16,8 +16,18 @@ var options = new Supabase.SupabaseOptions
 var supabase = new Supabase.Client(url, key, options);
 await supabase.InitializeAsync();
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("*");
+                      });
+});
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,7 +35,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -70,6 +79,8 @@ app.MapPost("/create-item", async (NewItem item) =>
 })
 .WithName("CreateItem")
 .WithOpenApi();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
 

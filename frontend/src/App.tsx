@@ -8,8 +8,8 @@ function App() {
 				<a className="m-2 p-2 bg-blue-600 text-white rounded-md" href="/">
 					Home
 				</a>
-				<a className="m-2 p-2 bg-blue-600 text-white rounded-md" href="/item">
-					Item
+				<a className="m-2 p-2 bg-blue-600 text-white rounded-md" href="/items">
+					Items
 				</a>
 			</div>
 			<Outlet />

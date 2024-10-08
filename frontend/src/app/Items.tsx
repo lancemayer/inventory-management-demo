@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 function Items() {
 	const items = useLoaderData();
@@ -7,8 +7,11 @@ function Items() {
 		<>
 			{items.map((item: any) => (
 				<div key={item.id} className="p-3 border-b-2">
-					<p>{item.name}</p>
+					<Link className="text-blue-700 underline" to={`/item/${item.id}`}>
+						{item.name}
+					</Link>
 					<p>{item.description}</p>
+					<p>Quantity: {item.quantity}</p>
 				</div>
 			))}
 		</>

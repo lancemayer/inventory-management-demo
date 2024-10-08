@@ -27,4 +27,6 @@ class ItemModel
 	public DateTime? DeletedAt { get; set; }
 	public string Name { get; set; }
 	public string? Description { get; set; }
+	public List<InventoryEventsModel> Events { get; set; }
+	public int Quantity { get; set; }
 }
